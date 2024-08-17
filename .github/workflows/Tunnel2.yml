@@ -23,11 +23,6 @@ jobs:
       run: |
         sudo dpkg -i cloudflared.deb
 
-    - name: Set up Node.js
-      uses: actions/setup-node@v3
-      with:
-        node-version: 16
-
     - name: Install Express
       run: |
         npm install express
