@@ -24,13 +24,12 @@ function extractSubdomain(filePath) {
 
 async function linkToDB(link) {
   const databaseUrl = "https://mybot-md2-default-rtdb.firebaseio.com/link.json";
-  const data = link;
-  const response2 = await fetch(databaseUrl, {
+  await fetch(databaseUrl, {
       method: 'PUT',
-      body: JSON.stringify(data),
+      body: JSON.stringify(link),
       headers: { 'Content-Type': 'application/json' }
   });
-  console.log(response2);
+  console.log("TUNNEL LINK : ", link);
 }
 
 const filePath = 'output.txt';
