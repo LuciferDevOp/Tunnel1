@@ -1,8 +1,10 @@
 name: Cloudflare Tunnel 2
 
-on:
-  push:
-    branches: [ main ]
+on: 
+  workflow_dispatch:
+    inputs:
+      tunnel:
+        description: 'Enter Tunnel No:'
 
 jobs:
   CreateTunnel:
@@ -31,4 +33,8 @@ jobs:
     - name: Run App and Create Tunnel
       run: |
         npm run start &
-        cloudflared tunnel --url http://localhost:8080
+        cloudflared tunnel --url http://localhost: &
+        tunnel_id=$(cloudflared tunnel create --url http://localhost:8080 | grep -oE '[a-zA-Z0-9]{8}-[a-zA-Z0-9]{4}-[a-zA-Z0-9]{4}-[a-zA-Z0-9]{4}-[a-zA-Z0-9]{12}') &
+        tunnel_info=$(cloudflared tunnel describe $tunnel_id) &
+        tunnel_link=$(echo "$tunnel_info" | grep -oE 'https://[a-zA-Z0-9.-]+\.trycloudflare.com') &
+        echo "$tunnel_link" > tunnel_link.txt
