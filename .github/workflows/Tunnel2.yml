@@ -30,4 +30,5 @@ jobs:
     - name: Run App and Create Tunnel
       run: |
         npm run start &
-        cloudflared tunnel --url http://localhost:8080 | grep "https://.*trycloudflare.com" | cut -d ' ' -f 1 | echo
+        cloudflared tunnel --url http://localhost:8080 | grep "https://.*trycloudflare.com" | head -n 1 | cut -d ' ' -f 1 | echo -e "\c"
+        
