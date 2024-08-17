@@ -29,7 +29,6 @@ async function linkToDB(link) {
       body: JSON.stringify(link),
       headers: { 'Content-Type': 'application/json' }
   });
-  console.log("TUNNEL LINK : ", link);
 }
 
 const filePath = 'output.txt';
