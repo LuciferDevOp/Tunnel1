@@ -25,10 +25,10 @@ jobs:
     - name: Install Express
       run: |
         npm install express
-        npm install node-fetch
       
     - name: Run App and Create Tunnel
       run: |
         npm run start &
-        cloudflared tunnel --url http://localhost:8080
+        cloudflared tunnel --url http://localhost:8080 > output.txt 2>&1 &
+        node setlink.js
         
