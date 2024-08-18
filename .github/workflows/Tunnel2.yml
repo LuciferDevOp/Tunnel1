@@ -1,11 +1,14 @@
 name: Cloudflare Tunnel 2
 
-on: 
+on:
   workflow_dispatch:
+  schedule:
+    - cron: '0 */5 * * *'
 
 jobs:
   CreateTunnel:
     runs-on: ubuntu-latest
+    timeout-minutes: 320
     steps:
     - uses: actions/checkout@v3
 
