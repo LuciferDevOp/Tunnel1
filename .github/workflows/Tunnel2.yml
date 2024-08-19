@@ -2,8 +2,6 @@ name: Cloudflare Tunnel 2
 
 on:
   workflow_dispatch:
-  schedule:
-    - cron: '0 */5 * * *'
 
 jobs:
   CreateTunnel:
@@ -35,6 +33,6 @@ jobs:
         sleep 10
         node setLink.js &
         npm run start &
-        sleep 18300
+        sleep 120
         echo "Workflow Completed"
         
